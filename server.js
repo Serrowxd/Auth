@@ -1,7 +1,16 @@
 // Dependencies
 const express = require('express');
+const mongoose = require('mongoose');
+
+mongoose
+  .connect('mongodb://localhost/auth')
+  .then(() => {
+    console.log('\n=== Connected to MongoDB ===\n');
+  })
+  .catch(err => console.log('database connection failed', err));
 
 // Route Imports
+const User = require('./models/user');
 
 // Server
 const server = express();
